@@ -1,0 +1,17 @@
+set terminal png transparent nocrop enhanced size 480,280
+set output 'perf.png'
+
+set boxwidth 1 absolute
+set style fill solid 1.00 border -1
+set style histogram clustered gap 0 title offset character 0, 0, 0
+set datafile missing '-'
+set style data linespoints
+
+set title "Performance tests of Java Bean mapper"
+set yrange [ 1.00000 : 12000 ] noreverse nowriteback
+set ylabel "Milliseconds"
+set xlabel "Number of test runs"
+set logscale y
+set key nobox left
+
+plot 'perf.log' using 2:xtic(1) ti col, '' u 3 ti col, '' u 4 ti col, '' u 5 ti col, '' u 6 ti col
